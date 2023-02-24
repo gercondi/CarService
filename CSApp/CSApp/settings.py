@@ -58,7 +58,8 @@ ROOT_URLCONF = 'CSApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #todo indica el lugar donde seencuentra la carpeta template en el proyecto
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,3 +130,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#todo indica que la pagina a la que se va a redirigir una vez haga login es index
+LOGIN_REDIRECT_URL = '/'
