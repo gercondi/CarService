@@ -1,4 +1,6 @@
 from django.contrib import admin
+from cars.models import Owners, Cars
 
 # Register your models here.
-# todo admin.site.register(Cars)
+admin.site.register(Cars)
+admin.site.register(Owners)
