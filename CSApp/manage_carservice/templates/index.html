@@ -16,4 +16,32 @@
     <li><strong>Services per Car:</strong> {{ car_services }}</li>
   </ul>
 
+  <!-- Mostramos el resultado de la consulta en una tabla -->
+  <div class="Caja">
+    <div id="h2">
+      <h4 text-align="center">{{num_services|length}} servicios encontrados en Grupo {{ user.groups.all.0.name }}</h4>
+
+      <table class="table table-sm">
+        <thead>
+          <div class="text">
+            <th>Placa</th>
+            <th>Servicio</th>
+            <th>Fecha</th>
+            <th>Facturado</th>
+          </div>
+        </thead>
+        <tbody>
+          {% for serv in detail_services %}
+          <tr>
+            <td><a href="{% url 'index' %}">{{serv.placa}}</a></td>
+            <td><a href="{% url 'index' %}">{{serv.servicio}}</a></td>
+            <td><a href="{% url 'index' %}">{{serv.date}}</a></td>
+            <td><a href="{% url 'index' %}">{{serv.porfacturar}}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 {% endblock %}

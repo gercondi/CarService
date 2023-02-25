@@ -1,5 +1,5 @@
 from django.db import models
-from owners.models import Owners
+from cars.models import Cars
 from services.models import Services
 
 # Create your models here.
@@ -8,14 +8,18 @@ from services.models import Services
 class ServicestoCars (models.Model):
 
     class PorFacturar(models.TextChoices):
-        SI = 'S', 'Facturado'
-        NO = 'N', 'No Facturado'
+        S = 'S' #, 'Facturado'
+        N = 'N' #, 'No Facturado'
 
-    placa = models.ForeignKey(Owners, on_delete=models.CASCADE)
+    placa = models.ForeignKey(Cars, on_delete=models.CASCADE)
     servicio = models.ManyToManyField(Services)
-    date = models.DateTimeField
-    porfacturar = models.CharField(max_length=1, choices=PorFacturar.choices, default='N')
+    date = models.DateTimeField(verbose_name='fechaservicio',auto_now=True)
+    porfacturar = models.CharField(max_length=1, choices=PorFacturar.choices, default=PorFacturar.N)
 
     def __str__(self):
-        return self.placa
+        return "Servicio creado exitosamente"
+
+    class Meta:
+        verbose_name = 'Servicio a Carro'
+        verbose_name_plural = 'Servicios a Carros'
 
